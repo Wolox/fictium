@@ -1,6 +1,9 @@
 require 'bundler/setup'
-require 'rails'
-require 'fictium'
+
+# Load GEM dependencies first
+Bundler.require(:development, :test)
+# Load default config (fictium included!)
+Bundler.require(:default)
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

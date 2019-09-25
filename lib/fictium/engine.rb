@@ -3,6 +3,6 @@ module Fictium
     engine_name 'fictium'
     isolate_namespace Fictium
 
-    config.autoload_paths << __dir__
+    config.autoload_paths += Dir[File.join(__dir__, '**')]
   end
 end
