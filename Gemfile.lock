@@ -63,6 +63,7 @@ GEM
       tzinfo (~> 1.1)
       zeitwerk (~> 2.1, >= 2.1.8)
     ast (2.4.0)
+    brakeman (4.6.1)
     builder (3.2.3)
     byebug (11.0.1)
     concurrent-ruby (1.1.5)
@@ -167,6 +168,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  brakeman
   bundler (~> 2.0)
   byebug
   fictium!

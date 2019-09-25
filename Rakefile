@@ -3,7 +3,7 @@ require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
 
-Dir[File.join(__dir__, 'tasks', '**', '*.rake')].each do |f|
+Dir[File.join(__dir__, 'tasks', '**', '*.rb')].each do |f|
   require f
 end
 
