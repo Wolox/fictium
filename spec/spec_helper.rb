@@ -2,6 +2,9 @@ require 'bundler/setup'
 
 # Load GEM dependencies first
 Bundler.require(:development, :test)
+
+SimpleCov.start
+
 # Load default config (fictium included!)
 Bundler.require(:default)
 

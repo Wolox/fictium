@@ -39,6 +39,8 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
 
   spec.add_development_dependency 'brakeman'
 
+  spec.add_development_dependency 'faker', '~> 2.6.0'
+
   spec.add_development_dependency 'rails',
                                   Fictium::RAILS_MIN_VERSION,
                                   Fictium::RAILS_MAX_VERSION
@@ -46,4 +48,5 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.add_development_dependency 'rspec', '~> 3.8'
   spec.add_development_dependency 'rubocop', '0.74'
   spec.add_development_dependency 'rubocop-rspec', '1.35.0'
+  spec.add_development_dependency 'simplecov', '~> 0.17.0'
 end
