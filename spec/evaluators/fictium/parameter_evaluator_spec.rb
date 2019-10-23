@@ -43,8 +43,6 @@ describe Fictium::ParameterEvaluator do
     end
   end
 
-  describe '#'
-
   describe '#respond_to?' do
     subject(:evaluator) { described_class.new }
 
