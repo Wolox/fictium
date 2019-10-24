@@ -10,6 +10,9 @@ require 'rails/config/routes'
 
 require 'rspec/rails'
 
+require_relative 'support/shared_contexts'
+require_relative 'support/shared_examples'
+
 SimpleCov.start
 
 # Load default config (fictium included!)
