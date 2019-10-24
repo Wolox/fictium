@@ -33,7 +33,7 @@ class Book < ApplicationRecord
         id: 10, name: 'J', topics: [Topic[1], Topic[3]]
       ).freeze
     ].freeze
-    
+
     def all
       BOOKS
     end
