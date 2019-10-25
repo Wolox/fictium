@@ -1,6 +1,9 @@
 # Use core extensions on this gem
 require 'active_support'
 
+# JSON Schema validators
+require 'json-schema'
+
 # Core functionalities
 require_relative 'fictium/version'
 

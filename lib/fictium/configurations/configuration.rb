@@ -3,14 +3,23 @@ module Fictium
     VOWEL = /[aeiou]/i.freeze
     private_constant :VOWEL
 
+    attr_reader :info
     attr_accessor :exporters, :summary_format, :default_action_descriptors,
-                  :unknown_action_descriptor, :default_subject
+                  :unknown_action_descriptor, :default_subject, :fixture_path,
+                  :export_path
 
     def initialize
-      # TODO: Add default exporter in exporter list
-      @exporters = []
+      @info = Fictium::Configuration::Info.new
+      @exporters = [Fictium::OpenApi::V3Exporter.new]
 
       @summary_format = method(:default_summary_format)
+      setup_descriptors
+      setup_strings
+    end
+
+    private
+
+    def setup_descriptors
       @default_action_descriptors = {
         default_summary_for_index: method(:default_summary_for_index),
         default_summary_for_show: method(:default_summary_for_show),
@@ -18,10 +27,12 @@ module Fictium
         default_summary_for_destroy: method(:default_summary_for_destroy)
       }
       @unknown_action_descriptor = method(:default_unknown_action_descriptor)
-      @default_subject = 'This endpoint'
     end
 
-    private
+    def setup_strings
+      @default_subject = 'This endpoint'
+      @export_path = 'doc'
+    end
 
     def default_summary_format(resources)
       "Handles API #{resources}."
