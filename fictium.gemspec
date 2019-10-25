@@ -35,7 +35,6 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
 
   spec.add_runtime_dependency 'json-schema', '~> 2.8.1'
   spec.add_runtime_dependency 'verbs', '~> 2.1.4'
-  spec.add_runtime_dependency 'json-schema', '~> 2.8.1'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
 
