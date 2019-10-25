@@ -1,21 +1,36 @@
 describe BooksController do
-  describe 'GET #index' do
+  # While automatically inferred, they can be also manually specified:
+  base_path '/tags/:tag_id/books'
+  resource_name 'book'
+  resource_summary 'Lists all books for a specific tag.'
+  resource_description <<~HEREDOC
+    This will fail if the tag does not exists.
+    The results are not paginated.
+  HEREDOC
+  resource_tags 'tags', 'list'
+
+  describe action 'GET #index' do
     subject(:make_request) { get :index, params: params }
+
+    # This is also auto detected, but can be manually changed
+    path ''
 
     let(:params) { { topic_id: topic_id } }
     let(:topic_id) { 1 }
 
-    context 'when a valid topic is given' do
+    describe example 'when a valid topic is given' do
       before do
         make_request
       end
+
+      default_example
 
       it 'responds with ok status' do
         expect(response).to have_http_status(:ok)
       end
     end
 
-    context 'when an invalid topic is given' do
+    describe example 'when an invalid topic is given' do
       let(:topic_id) { -1 }
 
       include_examples 'not found examples'

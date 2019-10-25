@@ -44,11 +44,39 @@ The document, then is divided in resources. The class [Fictium::Resource](./lib/
 
 Each resource is sub divided in actions, [Fictium::Action](./lib/fictoum/poros/fictium/action). Actions are enpoints associated with a REST method.
 
+### Configuration
+
+This gem attemps to complete the documentation for you, so you don't have to constantly document it yourself.
+To configure how this gem completes your documentation, you have some nice configurations available:
+
+TODO: Describe possible configurations and each value
+
 ### RSpec Integration
 
-Just add the following file fictium/rspec. And your RSpec test will run for free.
+Just `require 'fictium/rspec'` in your spec helper and your RSpec test will include everything you need to work in your environment.
 
-[TODO: Add examples of using RSpec here!]
+At any test of type: :controller, you can just add the following helpers:
+
+```rb
+describe PostsController do
+  describe action 'GET #index' do
+    describe example 'without errors' do
+        default_example # You can select an example to be marked as default in your action
+
+        before do
+            get :index
+        end
+
+        # ... your tests
+    end
+  end
+end
+```
+
+The idea, is that your controller has actions, and each actions has examples.
+You can, for now, check `spec/controllers` at this repository to
+
+TODO: Go deeper to explain default overrides
 
 ## Development
 

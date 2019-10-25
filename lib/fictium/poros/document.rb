@@ -9,5 +9,11 @@ module Fictium
     def create_resource
       Fictium::Resource.new(self).tap { |resource| resources << resource }
     end
+
+    def export
+      Fictium.configuration.exporters.each do |exporter|
+        exporter.export(self)
+      end
+    end
   end
 end

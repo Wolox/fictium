@@ -33,6 +33,8 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
                               Fictium::RAILS_MIN_VERSION,
                               Fictium::RAILS_MAX_VERSION
 
+  spec.add_runtime_dependency 'verbs', '~> 2.1.4'
+
   spec.add_development_dependency 'bundler', '~> 2.0'
 
   spec.add_development_dependency 'byebug'
