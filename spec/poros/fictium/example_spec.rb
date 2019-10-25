@@ -6,7 +6,7 @@ describe Fictium::Example do
   describe '.new' do
     subject(:new_instance) { described_class.new(action) }
 
-    it 'contains  the action as a member' do
+    it 'contains the action as a member' do
       expect(new_instance.action).to eq action
     end
   end

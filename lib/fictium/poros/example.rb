@@ -1,7 +1,7 @@
 module Fictium
   class Example < Fictium::Model
     attr_reader :action
-    attr_accessor :status_code, :response_body, :content_type, :default
+    attr_accessor :summary, :description, :status_code, :response_body, :content_type, :default
 
     def initialize(action)
       @action = action

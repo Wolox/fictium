@@ -5,6 +5,7 @@ module Fictium
 
       included do
         metadata[:fictium_example] = metadata[:fictium_action].add_example
+        metadata[:fictium_example].summary = metadata[:description]
 
         context 'with documentation' do
           let(:metadata) { self.class.metadata }
