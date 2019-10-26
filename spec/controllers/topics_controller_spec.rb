@@ -9,8 +9,6 @@ describe TopicsController do
         make_request
       end
 
-      default_example
-
       it 'responds with ok status' do
         expect(response).to have_http_status(:ok)
       end

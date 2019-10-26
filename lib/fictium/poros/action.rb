@@ -1,7 +1,7 @@
 module Fictium
   class Action < Fictium::Model
     ACTION_NAME = /#([A-Z_]+)/i.freeze
-    PATH_METHODS = /$(get|post|put|patch|delete)/i.freeze
+    PATH_METHODS = /^(get|post|put|patch|delete)/i.freeze
     DEFAULT_PATHS = {
       create: '',
       new: '/new',
@@ -10,14 +10,15 @@ module Fictium
       destroy: '/{id}'
     }.freeze
 
-    attr_reader :resource, :examples
-    attr_accessor :path, :summary, :description, :method, :tags
+    attr_reader :resource, :examples, :params
+    attr_accessor :path, :summary, :description, :method, :tags, :deprecated
 
     def initialize(resource)
       @resource = resource
       @params = ActiveSupport::HashWithIndifferentAccess.new
       @examples = []
       @tags = []
+      @deprecated = false
     end
 
     def full_path
@@ -46,6 +47,14 @@ module Fictium
 
     def combined_tags
       resource.tags + tags
+    end
+
+    def deprecated?
+      deprecated
+    end
+
+    def default_example
+      examples.find(&:default?).presence || examples.first
     end
 
     private

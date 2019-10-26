@@ -16,7 +16,7 @@ module Fictium
                  .merge(info: create_info, paths: create_paths(document))
         validate!(result)
         FileUtils.mkdir_p(File.dirname(export_file))
-        File.write(export_file, result.to_json)
+        File.write(export_file, pretty_print? ? JSON.pretty_generate(result) : result.to_json)
       end
 
       private
@@ -65,6 +65,10 @@ module Fictium
 
       def schema
         @schema ||= JSON.parse(File.read(File.join(__dir__, 'schemas', '3.0.0.json')))
+      end
+
+      def pretty_print?
+        Fictium.configuration.pretty_print
       end
     end
   end

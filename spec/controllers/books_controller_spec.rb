@@ -1,6 +1,6 @@
 describe BooksController do
   # While automatically inferred, they can be also manually specified:
-  base_path '/tags/:tag_id/books'
+  base_path '/tags/{tag_id}/books'
   resource_name 'book'
   resource_summary 'Lists all books for a specific tag.'
   resource_description <<~HEREDOC
@@ -14,6 +14,7 @@ describe BooksController do
 
     # This is also auto detected, but can be manually changed
     path ''
+    deprecate!
 
     let(:params) { { topic_id: topic_id } }
     let(:topic_id) { 1 }

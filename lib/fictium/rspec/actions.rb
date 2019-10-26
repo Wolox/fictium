@@ -20,6 +20,10 @@ module Fictium
         def example(*args, **kwargs)
           Fictium::RSpec::Proxies::Example.new(self, args, kwargs)
         end
+
+        def deprecate!
+          metadata[:fictium_action].deprecated = true
+        end
       end
     end
   end
