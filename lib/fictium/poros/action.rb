@@ -11,12 +11,13 @@ module Fictium
     }.freeze
 
     attr_reader :resource, :examples
-    attr_accessor :path, :summary, :description, :method
+    attr_accessor :path, :summary, :description, :method, :tags
 
     def initialize(resource)
       @resource = resource
       @params = ActiveSupport::HashWithIndifferentAccess.new
       @examples = []
+      @tags = []
     end
 
     def full_path
@@ -41,6 +42,10 @@ module Fictium
       find_summary(name)
       find_path(name)
       find_method(description)
+    end
+
+    def combined_tags
+      resource.tags + tags
     end
 
     private
