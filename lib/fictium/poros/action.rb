@@ -5,9 +5,9 @@ module Fictium
     DEFAULT_PATHS = {
       create: '',
       new: '/new',
-      show: '/:id',
-      update: '/:id',
-      destroy: '/:id'
+      show: '/{id}',
+      update: '/{id}',
+      destroy: '/{id}'
     }.freeze
 
     attr_reader :resource, :examples
@@ -67,7 +67,7 @@ module Fictium
       return if name.blank?
 
       key = name.to_sym
-      self.path = DEFAULT_PATHS[key].presence || "/:id/#{name}"
+      self.path = DEFAULT_PATHS[key].presence || "/{id}/#{name}"
     end
 
     def find_action_name(description)
