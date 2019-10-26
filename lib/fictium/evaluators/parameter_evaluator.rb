@@ -39,8 +39,15 @@ module Fictium
         required: required,
         deprecated: deprecated,
         allowEmptyValue: allow_empty,
-        schema: kwargs[:schema] && schema_evaluator.format(**kwargs[:schema])
+        schema: format_schema(kwargs)
       }
+    end
+
+    def format_schema(args)
+      return unless args[:schema].present?
+
+      schema_evaluator.format(ref: args[:schema][:ref]) if args[:schema][:ref].present?
+      schema_evaluator.format(args[:schema])
     end
 
     def schema_evaluator
