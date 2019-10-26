@@ -23,22 +23,18 @@ module Fictium
       class_methods do
         def default_example
           metadata[:fictium_example].default = true
+          metadata[:fictium_schema] = Fictium::SchemaEvaluator.new
         end
 
         def request_schema(obj = nil, ref: nil)
-          error_msg = 'request_schema needs a JSON-like object or a reference'
-          raise ArgumentError, error_msg if obj.blank? && ref.blank?
-
           metadata[:fictium_example].request ||= {}
-          metadata[:fictium_example].request[:schema] = ref || obj
+          metadata[:fictium_example].request[:schema] =
+            metadata[:fictium_schema].format(obj, ref: ref)
         end
 
         def response_schema(obj = nil, ref: nil)
-          error_msg = 'response_schema needs a JSON-like object or a reference'
-          raise ArgumentError, error_msg if obj.blank? && ref.blank?
-
-          metadata[:fictium_example].response ||= {}
-          metadata[:fictium_example].response[:schema] = ref || obj
+          metadata[:fictium_example].response[:schema] =
+            metadata[:fictium_schema].format(obj, ref: ref)
         end
 
         def require_request_body!

@@ -2,6 +2,7 @@ require_relative 'configurations/configuration'
 require_relative 'configurations/info'
 
 require_relative 'evaluators/parameter_evaluator'
+require_relative 'evaluators/schema_evaluator'
 
 require_relative 'poros/model'
 

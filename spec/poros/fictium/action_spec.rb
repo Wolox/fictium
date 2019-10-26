@@ -18,7 +18,7 @@ describe Fictium::Action do
   describe '#add_params_in' do
     before do
       action.add_params_in(:head) do
-        a { 3 }
+        a
       end
     end
 
@@ -27,7 +27,7 @@ describe Fictium::Action do
     end
 
     it 'adds the new parameters properly' do
-      expect(action[:head][:a]).to eq(3)
+      expect(action[:head][:a]).to be_a(Hash)
     end
   end
 
