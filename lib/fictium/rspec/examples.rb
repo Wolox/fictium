@@ -12,7 +12,10 @@ module Fictium
 
           it 'documents the example' do
             expect(metadata[:fictium_example]).to be_present
-            metadata[:fictium_example].process_http_response(response)
+            Fictium::RSpec::Autocomplete::Example.process_http_response(
+              metadata[:fictium_example],
+              response
+            )
           end
         end
       end

@@ -5,7 +5,10 @@ module Fictium
 
       included do
         metadata[:fictium_action] = metadata[:fictium_resource].create_action
-        metadata[:fictium_action].description_attributes(metadata[:description])
+        Fictium::RSpec::Autocomplete::Action.description_attributes(
+          metadata[:fictium_action],
+          metadata[:description]
+        )
       end
 
       class_methods do

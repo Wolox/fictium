@@ -5,7 +5,10 @@ module Fictium
 
       included do
         metadata[:fictium_resource] = Fictium::RSpec.document.create_resource
-        metadata[:fictium_resource].name_attributes(metadata[:described_class].name)
+        Fictium::RSpec::Autocomplete::Resource.name_attributes(
+          metadata[:fictium_resource],
+          metadata[:described_class].name
+        )
       end
 
       class_methods do
