@@ -48,6 +48,7 @@ describe TopicsController do
       include_context 'with account login'
 
       default_example
+      require_request_body!
 
       let(:params) { { topic: { name: 'New Topic' } } }
 
@@ -78,6 +79,7 @@ describe TopicsController do
       include_context 'with account login'
 
       default_example
+      require_request_body!
 
       before do
         make_request

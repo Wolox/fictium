@@ -23,10 +23,12 @@ module Fictium
     private
 
     def process_http_request(request)
-      self.request = self.request || {
+      self.request ||= {}
+      self.request.merge!(
         content_type: request.content_type,
         body: request.body.string
-      }
+      )
+      action.method = request.method.downcase.to_sym if action.method.blank?
     end
   end
 end

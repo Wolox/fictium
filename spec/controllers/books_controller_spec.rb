@@ -1,13 +1,13 @@
 describe BooksController do
   # While automatically inferred, they can be also manually specified:
-  base_path '/tags/{tag_id}/books'
+  base_path '/topics/{tag_id}/books'
   resource_name 'book'
-  resource_summary 'Lists all books for a specific tag.'
+  resource_summary 'Lists all books for a specific topic.'
   resource_description <<~HEREDOC
-    This will fail if the tag does not exists.
+    This will fail if the topic does not exists.
     The results are not paginated.
   HEREDOC
-  resource_tags 'tags', 'list'
+  resource_tags 'topics', 'list'
 
   describe action 'GET #index' do
     subject(:make_request) { get :index, params: params }

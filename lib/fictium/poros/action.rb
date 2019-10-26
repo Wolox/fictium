@@ -42,7 +42,6 @@ module Fictium
       name = find_action_name(description)&.downcase
       find_summary(name)
       find_path(name)
-      find_method(description)
     end
 
     def combined_tags
@@ -70,11 +69,6 @@ module Fictium
 
     def descriptors
       @descriptors ||= Fictium.configuration.default_action_descriptors || {}
-    end
-
-    def find_method(description)
-      match = description.match(PATH_METHODS)
-      self.method = match.presence && match[1]&.downcase
     end
 
     def find_path(name)
