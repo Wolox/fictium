@@ -15,45 +15,64 @@ module Fictium
         end
 
         def create_operation(action)
-          {
-            tags: action.combined_tags,
-            description: action.summary,
-            parameters: format_parameters(action),
-            responses: format_responses(action),
-            deprecated: action.deprecated?
-          }
+          {}.tap do |operation|
+            operation[:tags] = action.combined_tags
+            operation[:description] = action.summary
+            operation[:parameters] = format_parameters(action)
+            operation[:responses] = format_responses(operation, action)
+            operation[:deprecated] = action.deprecated?
+          end
         end
 
         def format_parameters(_action)
           [] # TODO: Improve parameters
         end
 
-        def format_responses(action)
+        def format_responses(operation, action)
           {}.tap do |responses|
-            default_response = action.default_example
-            break if default_response.blank?
+            default_example = action.default_example
+            break if default_example.blank?
 
-            responses[:default] = format_response(default_response)
-            action.examples.reject { |r| r == default_response }.each do |response|
-              responses[response.status_code] = format_response(response)
+            format_default_example(operation, responses, default_example)
+            other_examples = action.examples.reject { |example| example == default_example }
+            other_examples.each do |example|
+              responses[example.response[:status]] = format_example(example)
             end
           end
         end
 
-        def format_response(response)
-          {
-            description: response.summary,
-            content: format_content(response)
+        def format_default_example(operation, responses, default_example)
+          responses[:default] = format_example(default_example)
+          return if default_example.request[:content_type].blank?
+
+          operation[:requestBody] = {
+            content: format_content(default_example.request)
           }
+          operation[:requestBody][:required] = true if default_example.request[:required]
         end
 
-        def format_content(response)
-          type = response.content_type.presence || Fictium.configuration.default_content_type
-          {
-            type.to_sym => {
-              example: response.response_body
+        def format_example(example)
+          { description: example.summary }.tap do |format|
+            content = format_content(example.response, default_response_content_type)
+            format[:content] = content if content.present?
+          end
+        end
+
+        def format_content(http_object, default = nil)
+          type = (http_object.presence && http_object[:content_type].presence) || default
+          return if type.blank?
+
+          {}.tap do |content|
+            media_type = {
+              example: http_object[:body]
             }
-          }
+            media_type[:schema] = http_object[:schema] if http_object[:schema].present?
+            content[type.to_sym] = media_type
+          end
+        end
+
+        def default_response_content_type
+          Fictium.configuration.default_response_content_type
         end
       end
     end

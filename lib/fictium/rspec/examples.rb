@@ -21,6 +21,27 @@ module Fictium
         def default_example
           metadata[:fictium_example].default = true
         end
+
+        def request_schema(obj = nil, ref: nil)
+          error_msg = 'request_schema needs a JSON-like object or a reference'
+          raise ArgumentError, error_msg if obj.blank? && ref.blank?
+
+          metadata[:fictium_example].request ||= {}
+          metadata[:fictium_example].request[:schema] = ref || obj
+        end
+
+        def response_schema(obj = nil, ref: nil)
+          error_msg = 'response_schema needs a JSON-like object or a reference'
+          raise ArgumentError, error_msg if obj.blank? && ref.blank?
+
+          metadata[:fictium_example].response ||= {}
+          metadata[:fictium_example].response[:schema] = ref || obj
+        end
+
+        def require_request_body!
+          metadata[:fictium_example].request ||= {}
+          metadata[:fictium_example].request[:required] = true
+        end
       end
     end
   end

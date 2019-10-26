@@ -11,7 +11,7 @@ module Fictium
     }.freeze
 
     attr_reader :resource, :examples, :params
-    attr_accessor :path, :summary, :description, :method, :tags, :deprecated
+    attr_accessor :path, :summary, :description, :method, :tags, :deprecated, :docs
 
     def initialize(resource)
       @resource = resource

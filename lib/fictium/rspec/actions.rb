@@ -24,6 +24,13 @@ module Fictium
         def deprecate!
           metadata[:fictium_action].deprecated = true
         end
+
+        def action_docs(description: nil, url:)
+          metadata[:fictium_action].docs = {}.tap do |docs|
+            docs[:url] = url
+            docs[:description] = description if description.present?
+          end
+        end
       end
     end
   end

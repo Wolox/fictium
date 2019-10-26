@@ -6,7 +6,7 @@ module Fictium
     attr_reader :info
     attr_accessor :exporters, :summary_format, :default_action_descriptors,
                   :unknown_action_descriptor, :default_subject, :fixture_path,
-                  :export_path, :default_content_type, :pretty_print
+                  :export_path, :default_response_content_type, :pretty_print
 
     def initialize
       @info = Fictium::Configuration::Info.new
@@ -33,7 +33,7 @@ module Fictium
     def setup_strings
       @default_subject = 'This endpoint'
       @export_path = 'doc'
-      @default_content_type = 'text/plain'
+      @default_response_content_type = 'text/plain'
     end
 
     def default_summary_format(resources)
