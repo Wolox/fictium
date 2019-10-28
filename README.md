@@ -1,5 +1,7 @@
 # Fictium
 
+[![Build Status](https://travis-ci.org/Wolox/fictium.svg?branch=master)](https://travis-ci.org/Wolox/fictium) [![Maintainability](https://api.codeclimate.com/v1/badges/52afbf838f92fe260b6e/maintainability)](https://codeclimate.com/github/Wolox/fictium/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/52afbf838f92fe260b6e/test_coverage)](https://codeclimate.com/github/Wolox/fictium/test_coverage)
+
 This gem is a documentation helper. The goal of this gem is, by adding small modifications into your existing tests,
 you can then transform it into easy REST documentation.
 
