@@ -4,6 +4,7 @@ module Fictium
       module Action
         ACTION_NAME = /#([A-Z_]+)/i.freeze
         DEFAULT_PATHS = {
+          index: '',
           create: '',
           new: '/new',
           show: '/{id}',
@@ -37,7 +38,7 @@ module Fictium
             return if name.blank?
 
             key = name.to_sym
-            action.path = DEFAULT_PATHS[key].presence || "/{id}/#{name}"
+            action.path = DEFAULT_PATHS[key] || "/{id}/#{name}"
           end
 
           def find_action_name(description)

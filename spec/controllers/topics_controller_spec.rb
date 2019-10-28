@@ -1,4 +1,6 @@
 describe TopicsController do
+  include_context 'with JSON API'
+
   describe action 'GET #index' do
     subject(:make_request) { get :index }
 

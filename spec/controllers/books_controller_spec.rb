@@ -1,4 +1,6 @@
 describe BooksController do
+  include_context 'with JSON API'
+
   # While automatically inferred, they can be also manually specified:
   base_path '/topics/{tag_id}/books'
   resource_name 'book'
