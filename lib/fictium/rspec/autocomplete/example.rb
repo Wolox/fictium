@@ -13,7 +13,7 @@ module Fictium
             process_http_request(example, response.request)
             return unless example.default?
 
-            autocomplete_params.extract_from_response(example.action, response)
+            autocomplete_params.extract_from_response(example, response)
           end
 
           private

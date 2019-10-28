@@ -1,12 +1,19 @@
 module Fictium
   class Configuration
     VOWEL = /[aeiou]/i.freeze
+    DEFAULT_IGNORED_HEADERS_GROUPS = %w[rack. action_dispatch.].freeze
+    DEFAULT_IGNORED_HEADERS = %w[
+      accept content-type authorization http_accept content_type
+      request_method server_name server_port query_string
+      http_cookie path_info
+    ].freeze
     private_constant :VOWEL
 
     attr_reader :info
     attr_accessor :exporters, :summary_format, :default_action_descriptors,
                   :unknown_action_descriptor, :default_subject, :fixture_path,
-                  :export_path, :default_response_content_type, :pretty_print
+                  :export_path, :default_response_content_type, :pretty_print,
+                  :ignored_header_values, :ignored_header_groups
 
     def initialize
       @info = Fictium::Configuration::Info.new
@@ -16,6 +23,8 @@ module Fictium
       @pretty_print = true
       setup_descriptors
       setup_strings
+      @ignored_header_values = DEFAULT_IGNORED_HEADERS.dup
+      @ignored_header_groups = DEFAULT_IGNORED_HEADERS_GROUPS.dup
     end
 
     private
