@@ -54,10 +54,6 @@ module Fictium
         def param_formatter
           @param_formatter ||= ParamFormatter.new
         end
-
-        def header_formatter
-          @header_formatter ||= ParamFormatter.new(ignore_name: true, ignore_in: true)
-        end
       end
     end
   end

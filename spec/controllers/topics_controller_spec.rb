@@ -82,6 +82,17 @@ describe TopicsController do
 
       default_example
       require_request_body!
+      request_schema type: 'object', required: %w[tag], properties: {
+        tag: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string'
+            }
+          },
+          required: %w[name]
+        }
+      }
 
       before do
         make_request
