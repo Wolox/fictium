@@ -24,8 +24,14 @@ module Fictium
           end
         end
 
-        def format_parameters(_action)
-          [] # TODO: Improve parameters
+        def format_parameters(action)
+          [].tap do |result|
+            action.params.each do |section, values|
+              values.each do |name, data|
+                result << param_formatter.format(name, section, data)
+              end
+            end
+          end
         end
 
         def format_responses(operation, action)
@@ -43,6 +49,14 @@ module Fictium
 
         def example_formatter
           @example_formatter ||= ExampleFormatter.new
+        end
+
+        def param_formatter
+          @param_formatter ||= ParamFormatter.new
+        end
+
+        def header_formatter
+          @header_formatter ||= ParamFormatter.new(ignore_name: true, ignore_in: true)
         end
       end
     end

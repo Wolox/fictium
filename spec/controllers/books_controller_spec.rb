@@ -2,7 +2,7 @@ describe BooksController do
   include_context 'with JSON API'
 
   # While automatically inferred, they can be also manually specified:
-  base_path '/topics/{tag_id}/books'
+  base_path '/topics/{topic_id}/books'
   resource_name 'book'
   resource_summary 'Lists all books for a specific topic.'
   resource_description <<~HEREDOC
@@ -13,6 +13,10 @@ describe BooksController do
 
   describe action 'GET #index' do
     subject(:make_request) { get :index, params: params }
+
+    params_in :path do
+      topic_id schema: { type: 'integer' }, description: "The topic's id"
+    end
 
     # This is also auto detected, but can be manually changed
     path ''

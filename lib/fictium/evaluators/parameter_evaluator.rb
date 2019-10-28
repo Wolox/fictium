@@ -38,7 +38,7 @@ module Fictium
         description: kwargs[:description],
         required: required,
         deprecated: deprecated,
-        allowEmptyValue: allow_empty,
+        allow_empty: allow_empty,
         schema: format_schema(kwargs)
       }
     end

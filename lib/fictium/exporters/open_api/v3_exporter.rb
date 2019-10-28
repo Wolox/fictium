@@ -1,5 +1,7 @@
 require_relative 'v3_exporter/content_formatter'
 require_relative 'v3_exporter/example_formatter'
+require_relative 'v3_exporter/param_formatter'
+
 require_relative 'v3_exporter/path_formatter'
 require_relative 'v3_exporter/path_generator'
 

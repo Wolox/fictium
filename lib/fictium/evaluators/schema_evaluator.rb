@@ -1,9 +1,9 @@
 module Fictium
   class SchemaEvaluator
-    def format(obj = nil, ref: nil)
-      raise error_message if obj.blank? && ref.blank?
+    def format(obj = nil)
+      raise error_message if obj.blank?
 
-      ref.present? ? { '$ref': ref } : obj
+      obj[:ref].present? ? { '$ref': obj[:ref] } : obj
     end
 
     private

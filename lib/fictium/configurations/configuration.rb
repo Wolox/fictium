@@ -1,12 +1,13 @@
 module Fictium
   class Configuration
     VOWEL = /[aeiou]/i.freeze
-    DEFAULT_IGNORED_HEADERS_GROUPS = %w[rack. action_dispatch.].freeze
+    DEFAULT_IGNORED_HEADERS_GROUPS = %w[rack. action_dispatch. action_controller.].freeze
     DEFAULT_IGNORED_HEADERS = %w[
       accept content-type authorization http_accept content_type
       request_method server_name server_port query_string
       http_cookie path_info x-frame-options x-xss-protection x-content-type-options
       x-download-options x-permitted-cross-domain-policies refrrer-policy
+      https script_name http_host remote_addr http_user_agent
     ].freeze
     private_constant :VOWEL
 
