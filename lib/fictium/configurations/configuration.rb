@@ -5,7 +5,8 @@ module Fictium
     DEFAULT_IGNORED_HEADERS = %w[
       accept content-type authorization http_accept content_type
       request_method server_name server_port query_string
-      http_cookie path_info
+      http_cookie path_info x-frame-options x-xss-protection x-content-type-options
+      x-download-options x-permitted-cross-domain-policies refrrer-policy
     ].freeze
     private_constant :VOWEL
 

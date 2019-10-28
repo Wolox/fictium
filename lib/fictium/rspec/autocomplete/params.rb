@@ -14,7 +14,15 @@ module Fictium
           end
 
           def extract_from_response(example, response)
-            # TODO: Extract from response
+            example.headers ||= ActiveSupport::HashWithIndifferentAccess.new
+            response.headers.each do |name, value|
+              next unless valid_header?(name)
+
+              example.headers[name] ||= {}
+              example.headers[name].merge!(
+                example: value
+              )
+            end
           end
 
           private
