@@ -11,9 +11,16 @@ module Fictium
               content_type: response.content_type
             )
             process_http_request(example, response.request)
+            return unless example.default?
+
+            autocomplete_params.extract_from_response(example.action, response)
           end
 
           private
+
+          def autocomplete_params
+            Fictium::RSpec::Autocomplete::Params
+          end
 
           def process_http_request(example, request)
             example.request ||= {}
@@ -21,6 +28,13 @@ module Fictium
               content_type: request.content_type,
               body: request.body.string
             )
+            extract_method(example, request)
+            return unless example.default?
+
+            autocomplete_params.extract_from_request(example.action, request)
+          end
+
+          def extract_method(example, request)
             action = example.action
             action.method = request.method.downcase.to_sym if action.method.blank?
           end

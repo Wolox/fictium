@@ -15,6 +15,7 @@ describe BooksController do
     # This is also auto detected, but can be manually changed
     path ''
     deprecate!
+    action_docs url: 'http://docstoaction.com'
 
     let(:params) { { topic_id: topic_id } }
     let(:topic_id) { 1 }
