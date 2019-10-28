@@ -33,6 +33,9 @@ Fictium is closely tied to RSpec and Rails, but it's developed in a way to suppo
 
 The primary goal is for generating OpenAPI Documentation, but, just like with RSpec, future versions may provide other output types.
 
+[Check out the wiki too!](./wiki)
+
+
 ### Common terminology of this gem
 
 Because this GEM is used to represent REST APIs, this gem, provides some common objects, which are used as a documentation naming scheme. They are independant from the actual documentation format, so each exporter should transform this abstract representation into the actual document representation.
