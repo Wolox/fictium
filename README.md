@@ -75,7 +75,8 @@ end
 The idea, is that your controller has actions, and each actions has examples.
 You can, for now, check `spec/controllers` at this repository to
 
-TODO: Go deeper to explain default overrides
+You can deeply customize your endpoints using RSpec.
+Check out details [here](./wiki/RSpec-definitions).
 
 ## Development
 
@@ -91,14 +92,11 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
+This gem is developed by (Wolox)[https://wolox.com.ar].
 
-## About
-
-This project was developed by [Ramiro Rojo](https://github.com/holywyvern).
 Maintainers: [Ramiro Rojo](https://github.com/holywyvern)
 Contributors: None (for now...)
 ![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
-
 
 ## Code of Conduct
 
