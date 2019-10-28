@@ -28,7 +28,7 @@ module Fictium
           private
 
           def parse_request_query(params, _action, request)
-            parse_query_values(request.query_string).each do |key, value|
+            request.query_parameters.each do |key, value|
               params[key] ||= {}
               params[key].merge!(
                 example: value
@@ -71,14 +71,6 @@ module Fictium
 
           def ignored_header_groups
             Fictium.configuration.ignored_header_groups
-          end
-
-          def parse_query_values(query_string)
-            if defined?(Rack::Utils)
-              Rack::Utils.parse_nested_query(query_string.presence || '')
-            else
-              CGI.parse(query_string.presence || '')
-            end
           end
         end
       end

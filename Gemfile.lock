@@ -3,7 +3,7 @@ PATH
   specs:
     fictium (0.1.0)
       activesupport (>= 5.3, < 6.2)
-      json-schema (~> 2.8.1)
+      json-schema (~> 2.8)
       verbs (~> 2.1.4)
 
 GEM

@@ -33,6 +33,7 @@ module Fictium
         end
 
         def response_schema(obj)
+          metadata[:fictium_example].response ||= {}
           metadata[:fictium_example].response[:schema] =
             metadata[:fictium_schema].format(obj)
         end
