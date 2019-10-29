@@ -28,6 +28,7 @@ describe BooksController do
 
     describe example 'when a valid topic is given' do
       before do
+        request.headers.merge!('X-Extra-Header': 'Some value')
         make_request
       end
 

@@ -8,6 +8,7 @@ module Fictium
       http_cookie path_info x-frame-options x-xss-protection x-content-type-options
       x-download-options x-permitted-cross-domain-policies refrrer-policy
       https script_name http_host remote_addr http_user_agent
+      http_authorization content_length raw_post_data
     ].freeze
     private_constant :VOWEL
 
