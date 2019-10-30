@@ -20,6 +20,14 @@ module Fictium
           metadata[:fictium_action].add_params_in(section, &block)
         end
 
+        def action_summary(text)
+          metadata[:fictium_action].summary = text
+        end
+
+        def action_description(text)
+          metadata[:fictium_action].description = text
+        end
+
         def example(*args, **kwargs)
           Fictium::RSpec::Proxies::Example.new(self, args, kwargs)
         end

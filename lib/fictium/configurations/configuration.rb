@@ -8,11 +8,11 @@ module Fictium
       http_cookie path_info x-frame-options x-xss-protection x-content-type-options
       x-download-options x-permitted-cross-domain-policies referrer-policy
       https script_name http_host remote_addr http_user_agent
-      http_authorization content_length raw_post_data
+      http_authorization content_length raw_post_data referrer-policy
     ].freeze
     private_constant :VOWEL
 
-    attr_reader :info
+    attr_reader :info, :api_blueprint
     attr_accessor :exporters, :summary_format, :default_action_descriptors,
                   :unknown_action_descriptor, :default_subject, :fixture_path,
                   :export_path, :default_response_content_type, :pretty_print,
@@ -20,6 +20,7 @@ module Fictium
 
     def initialize
       @info = Fictium::Configuration::Info.new
+      @api_blueprint = Fictium::Configuration::ApiBlueprint.new
       @exporters = [Fictium::OpenApi::V3Exporter.new]
 
       @summary_format = method(:default_summary_format)
@@ -58,22 +59,22 @@ module Fictium
     end
 
     def default_summary_for_index(action)
-      "#{default_subject} lists all available #{action.resource.name.pluralize}"
+      "List all available #{action.resource.name.pluralize}"
     end
 
     def default_summary_for_show(action)
       name = action.resource.name
-      "#{default_subject} shows details of #{get_preposition(name)} #{name}."
+      "Show details of #{get_preposition(name)} #{name}."
     end
 
     def default_summary_for_update(action)
       name = action.resource.name
-      "#{default_subject} updates #{get_preposition(name)} #{name}."
+      "Update #{get_preposition(name)} #{name}."
     end
 
     def default_summary_for_destroy(action)
       name = action.resource.name
-      "#{default_subject} destroys #{get_preposition(name)} #{name}."
+      "Destroy #{get_preposition(name)} #{name}."
     end
 
     def conjugate(name)

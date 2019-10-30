@@ -36,4 +36,9 @@ end
 
 Fictium.configure do |config|
   config.fixture_path = File.join(__dir__, 'support', 'docs')
+
+  config.info.terms_of_service = 'https://mytermsofservice.com'
+  config.info.license = { name: 'Apache-2.0', url: 'https://www.apache.org/licenses/LICENSE-2.0' }
+
+  config.exporters << Fictium::ApiBlueprintExporter.new
 end
