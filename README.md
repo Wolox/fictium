@@ -7,7 +7,17 @@ you can then transform it into easy REST documentation.
 
 For the initial release, the support is focused explicitly on generating documentation from [RSpec](https://rspec.info/) tests, and generate an [OpenAPI](https://github.com/OAI/OpenAPI-Specification) [V3.0.2](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md) Document.
 
-Future versions may allow to export to other OpenAPI versions, or even API Bluepint formats.
+The current Gem version allows to export into the following formats:
+
+| Exporter    | Class name | Notes |
+|---          |---         |---    |
+| [OpenApi 3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md) | `Fictium::OpenApi::V3Exporter`    | The default exporter for the current Gem version. It doesn't include 100% of the OpenAPI specification, but it works for the most common use cases. It's the format [Swagger](https://swagger.io/) uses for documentation. |
+| [API Blueprint](https://apiblueprint.org/documentation/specification.html) | `Fictium::ApiBlueprintExporter`| Used by [Apiary](https://apiary.io/). A superset of Markdown with special keywords and controls. |
+
+Future versions may provide:
+
+  - OpenApi 1.0 and 2.0
+  - Custom HTML exporter
 
 ## Installation
 
