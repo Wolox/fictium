@@ -85,7 +85,9 @@ module Fictium
     end
 
     def conjugate(name)
-      ::Verbs::Conjugator.conjugate name, subject: default_subject, tense: :present, person: default_person
+      ::Verbs::Conjugator.conjugate name, subject: default_subject,
+                                          tense: :present,
+                                          person: default_person
     end
 
     def get_preposition(resource_name)
