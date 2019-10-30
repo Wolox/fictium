@@ -9,12 +9,12 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.email         = ['ramiro.rojo@wolox.com.ar']
 
   spec.summary       = 'A gem to generate documentation out of tests.'
-  spec.homepage      = 'https://github.com/holywyvern/fictium'
-  spec.license       = 'Apache-2.0'
+  spec.homepage      = 'https://github.com/Wolox/fictium'
+  spec.license       = 'MIT'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/holywyvern/fictium'
-  spec.metadata['changelog_uri'] = 'https://github.com/holywyvern/fictium/CHANGELOG.md'
+  spec.metadata['source_code_uri'] = 'https://github.com/Wolox/fictium'
+  spec.metadata['changelog_uri'] = 'https://github.com/Wolox/fictium/CHANGELOG.md'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

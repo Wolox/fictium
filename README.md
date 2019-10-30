@@ -38,6 +38,15 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
+
+## About
+
+This project was developed by [Ramiro Rojo](https://github.com/holywyvern).
+Maintainers: [Ramiro Rojo](https://github.com/holywyvern)
+Contributors: None (for now...)
+![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
+
+
 ## Code of Conduct
 
 Everyone interacting in the Fictium project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/fictium/blob/master/CODE_OF_CONDUCT.md).
