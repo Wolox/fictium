@@ -5,7 +5,7 @@ you can then transform it into easy REST documentation.
 
 For the initial release, the support is focused explicitly on generating documentation from [RSpec](https://rspec.info/) tests, and generate an [OpenAPI](https://github.com/OAI/OpenAPI-Specification) [V3.0.2](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md) Document.
 
-Future versions may allow to export to other OpenAPI versions, or even API Bluepinrt formats.
+Future versions may allow to export to other OpenAPI versions, or even API Bluepint formats.
 
 ## Installation
 
