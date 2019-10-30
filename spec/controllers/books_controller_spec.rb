@@ -47,4 +47,34 @@ describe BooksController do
       include_examples 'not found examples'
     end
   end
+
+  describe action 'PATCH #promote' do
+    subject(:make_request) { patch :promote, params: params }
+
+    let(:params) { { id: book_id } }
+    let(:book_id) { 1 }
+
+    describe example 'when a valid book is given' do
+      include_context 'with account login'
+
+      before do
+        make_request
+      end
+
+      default_example
+
+      it 'responds with ok status' do
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    describe example 'when an invalid book is promoted' do
+      include_context 'with account login'
+      let(:book_id) { -1 }
+
+      include_examples 'not found examples'
+    end
+
+    include_examples 'unauthorized when not logged in'
+  end
 end
