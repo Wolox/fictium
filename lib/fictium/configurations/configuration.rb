@@ -12,7 +12,7 @@ module Fictium
     ].freeze
     private_constant :VOWEL
 
-    attr_reader :info, :api_blueprint
+    attr_reader :info, :api_blueprint, :postman
     attr_accessor :exporters, :summary_format, :default_action_descriptors,
                   :unknown_action_descriptor, :default_subject, :fixture_path,
                   :export_path, :default_response_content_type, :pretty_print,
@@ -21,6 +21,7 @@ module Fictium
     def initialize
       @info = Fictium::Configuration::Info.new
       @api_blueprint = Fictium::Configuration::ApiBlueprint.new
+      @postman = Fictium::Configuration::Postman.new
       @exporters = [Fictium::OpenApi::V3Exporter.new]
 
       @summary_format = method(:default_summary_format)
