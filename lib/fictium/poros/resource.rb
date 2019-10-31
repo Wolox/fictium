@@ -1,6 +1,6 @@
 module Fictium
   class Resource < Fictium::Model
-    REVERSE_CONTROLLER = 'Controller'.reverse.freeze
+    CONTROLLER_TERMINATION = /Controller$/.freeze
 
     attr_reader :document, :actions
     attr_accessor :name, :base_path, :summary, :description, :tags
@@ -16,7 +16,7 @@ module Fictium
     end
 
     def name_attributes(controller_name)
-      resource_path = controller_name.reverse.sub(REVERSE_CONTROLLER, '').reverse.underscore
+      resource_path = controller_name.sub(CONTROLLER_TERMINATION, '').underscore
       self.base_path = "/#{resource_path}"
       path_sections = resource_path.split('/')
       plural = path_sections.last
