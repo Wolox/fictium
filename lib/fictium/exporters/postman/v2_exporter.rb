@@ -8,6 +8,8 @@ require_relative 'v2_exporter/folder_formatter'
 
 require_relative 'v2_exporter/request_formatter'
 require_relative 'v2_exporter/response_formatter'
+require_relative 'v2_exporter/header_formatter'
+require_relative 'v2_exporter/body_formatter'
 
 module Fictium
   module Postman

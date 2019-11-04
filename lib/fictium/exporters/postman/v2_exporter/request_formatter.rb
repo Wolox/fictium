@@ -4,14 +4,13 @@ module Fictium
       class RequestFormatter
         PATH_VARIABLE = /{(?<var>[A-Z_\-][A-Z0-9_\-]*)}/i.freeze
 
-        def format(action)
-          example = action.default_example
+        def format(example)
           {}.tap do |result|
             result.merge!(
               url: format_url(example),
-              method: action.method.to_s.downcase,
-              description: action.description,
-              header: format_header(example)
+              method: example.action.method.to_s.downcase,
+              description: example.action.description,
+              header: header_formatter.format(example.request)
             )
             add_optional_values(example, result)
           end
@@ -73,22 +72,16 @@ module Fictium
         end
 
         def add_optional_values(example, result)
-          body = format_body(example)
+          body = body_formatter.format(example.request)
           result[:body] = body if body.present?
         end
 
-        def format_header(example)
-          [].tap do |header|
-            header << { key: 'Content-Type', value: example.request[:content_type] }
-            # TODO: Add the rest of the headers
-          end
+        def body_formatter
+          @body_formatter ||= BodyFormatter.new
         end
 
-        def format_body(example)
-          body = example.request[:body]
-          return if body.blank?
-
-          { mode: 'raw', raw: body }
+        def header_formatter
+          @header_formatter ||= HeaderFormatter.new
         end
       end
     end

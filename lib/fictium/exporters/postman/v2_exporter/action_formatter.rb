@@ -13,9 +13,14 @@ module Fictium
             id: "#{action.method} - #{action.full_path}",
             name: action.summary,
             description: action.description,
-            request: request_formatter.format(action),
-            response: response_formatter.format(action)
+            request: request_formatter.format(action.default_example),
+            response: format_responses(action)
           }
+        end
+
+        def format_responses(action)
+          result = action.examples.map { |example| response_formatter.format(example) }
+          result.reject(&:blank?)
         end
 
         def request_formatter
