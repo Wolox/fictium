@@ -1,20 +1,17 @@
-require_relative 'v2_exporters/info_formatter'
-require_relative 'v2_exporters/item_formatter'
-require_relative 'v2_exporters/event_formatter'
-require_relative 'v2_exporters/variable_formatter'
-require_relative 'v2_exporters/auth_formatter'
-require_relative 'v2_exporters/protocol_formatter'
+require_relative 'v2_exporter/action_formatter'
 
-require_relative 'v2_exporters/folder_formatter'
+require_relative 'v2_exporter/info_formatter'
+require_relative 'v2_exporter/item_formatter'
+require_relative 'v2_exporter/metadata_formatter'
 
-require_relative 'v2_exporters/request_formatter'
-require_relative 'v2_exporters/response_formatter'
+require_relative 'v2_exporter/folder_formatter'
+
+require_relative 'v2_exporter/request_formatter'
+require_relative 'v2_exporter/response_formatter'
 
 module Fictium
   module Postman
     class V2Exporter
-      OPTIONAL_KEYS = %w[event variable auth protocol_profile_behavior].freeze
-
       def export(document)
         result = format_document(document)
         validate!(result)
@@ -43,12 +40,11 @@ module Fictium
 
       def format_document(document)
         data = { info: info_formatter.format(document), item: item_formatter.format(document) }
-        data.tap do |result|
-          OPTIONAL_KEYS.each do |key|
-            result = send(:"#{key}_formatter", document)
-            data[key.camelize(:lower)] = result if result.present?
-          end
-        end
+        metadata_formatter.format(document, data)
+      end
+
+      def metadata_formatter
+        @metadata_formatter ||= MetadataFormatter.new
       end
 
       def info_formatter
@@ -57,22 +53,6 @@ module Fictium
 
       def item_formatter
         @item_formatter ||= ItemFormatter.new
-      end
-
-      def event_formatter
-        @event_formatter ||= EventFormatter.new
-      end
-
-      def variable_formatter
-        @variable_formatter ||= VariableFormatter.new
-      end
-
-      def auth_formatter
-        @auth_formatter ||= AuthFormatter.new
-      end
-
-      def protocol_profile_behavior_formatter
-        @protocol_profile_behavior_formatter ||= ProtocolFormatter.new
       end
     end
   end

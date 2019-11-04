@@ -5,6 +5,7 @@ require_relative 'configurations/postman'
 
 require_relative 'evaluators/parameter_evaluator'
 require_relative 'evaluators/schema_evaluator'
+require_relative 'evaluators/postman_evaluator'
 
 require_relative 'poros/model'
 

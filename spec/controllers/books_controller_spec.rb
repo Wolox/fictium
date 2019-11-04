@@ -18,6 +18,10 @@ describe BooksController do
       topic_id schema: { type: 'integer' }, description: "The topic's id"
     end
 
+    postman_for :action do
+      pre_request script: 'console.log("A");'
+    end
+
     # This is also auto detected, but can be manually changed
     action_summary 'List all books from a specific topic'
     action_description 'By giving an specific topic, this endpoint retrieves all books from it'

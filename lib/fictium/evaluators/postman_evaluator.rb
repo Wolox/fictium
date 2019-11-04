@@ -2,6 +2,8 @@ module Fictium
   class PostmanEvaluator
     attr_reader :subject
 
+    delegate :postman, to: :subject
+
     def initialize(subject)
       @subject = subject
     end
@@ -12,21 +14,38 @@ module Fictium
 
     private
 
-    def event
-      # Always allow
+    def pre_request(script:, disabled: false)
+      postman.event ||= []
+      postman.event << {
+        listen: :pre_request,
+        disabled: disabled,
+        script: {
+          exec: script.to_s.lines
+        }
+      }
     end
 
-    def protocol_profile_behavior
-      # Always allow
+    def test(script:, disabled: false)
+      postman.event ||= []
+      postman.event << {
+        listen: :test,
+        disabled: disabled,
+        script: {
+          exec: script.to_s.lines
+        }
+      }
     end
 
-    def variable
-      # Always allow
+    def variable(name:, value: '', type: :string, disabled: false)
+      postman.variable ||= []
+      postman.variable << { name: name, value: value, type: type, disabled: disabled }
     end
 
-    def auth
+    def auth(**kwargs)
       raise NoMethodError unless resource? || document?
-      # TODO: Implement
+
+      key = kwargs.keys.first
+      postman.auth = { type: key, key => kwargs[key] }
     end
 
     def resource?

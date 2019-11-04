@@ -4,6 +4,7 @@ module Fictium
       class ResponseFormatter
         def format(action)
           # TODO: Format Response
+          []
         end
       end
     end

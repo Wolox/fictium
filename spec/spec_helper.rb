@@ -41,4 +41,5 @@ Fictium.configure do |config|
   config.info.license = { name: 'Apache-2.0', url: 'https://www.apache.org/licenses/LICENSE-2.0' }
 
   config.exporters << Fictium::ApiBlueprintExporter.new
+  config.exporters << Fictium::Postman::V2Exporter.new
 end

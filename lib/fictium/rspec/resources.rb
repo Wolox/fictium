@@ -38,7 +38,7 @@ module Fictium
 
         def postman_for(object, &block)
           resource = metadata[:"fictium_#{object}"]
-          Fictium::PostmanEvaluator.new(resource.postman).evaluate(&block) if resource.present?
+          Fictium::PostmanEvaluator.new(resource).evaluate(&block)
         end
       end
     end
