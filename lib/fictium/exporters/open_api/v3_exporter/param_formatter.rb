@@ -10,12 +10,9 @@ module Fictium
         def format(name, section, hash)
           param = (hash || {})
           description = param.slice(:description, :required, :deprecated, :schema)
-          description[:description] ||= ''
-          description[:name] = name unless ignore_name?
-          description[:in] = section unless ignore_in?
           description[:allowEmptyValue] = param[:allow_empty] if param[:allow_empty].present?
-          description[:required] = true if section.to_s == 'path'
           add_required_fields(description)
+          add_optional_fields(name, section, description)
           description
         end
 
@@ -30,9 +27,17 @@ module Fictium
         end
 
         def add_required_fields(description)
+          description[:description] ||= ''
+
           return if description[:schema] || description[:content]
 
           description[:schema] = {}
+        end
+
+        def add_optional_fields(name, section, description)
+          description[:name] = name unless ignore_name?
+          description[:in] = section unless ignore_in?
+          description[:required] = true if section.to_s == 'path'
         end
       end
     end
