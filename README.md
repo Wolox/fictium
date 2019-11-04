@@ -52,4 +52,4 @@ Contributors: None (for now...)
 
 ## Code of Conduct
 
-Everyone interacting in the Fictium project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/fictium/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Fictium project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Wolox/fictium/blob/master/CODE_OF_CONDUCT.md).
