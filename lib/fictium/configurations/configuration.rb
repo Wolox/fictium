@@ -1,7 +1,7 @@
 module Fictium
   class Configuration
     VOWEL = /[aeiou]/i.freeze
-    VERB_TERMINATOR = /[hstv]/i.freeze
+    private_constant :VOWEL
 
     attr_accessor :exporters, :summary_format, :default_action_descriptors,
                   :unknown_action_descriptor, :default_subject

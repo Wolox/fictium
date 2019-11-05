@@ -47,9 +47,8 @@ Each resource is sub divided in actions, [Fictium::Action](./lib/fictoum/poros/f
 ### Configuration
 
 This gem attemps to complete the documentation for you, so you don't have to constantly document it yourself.
-To configure how this gem completes your documentation, you have some nice configurations available:
+To configure how this gem completes your documentation, you have some configurations available [here](https://github.com/Wolox/fictium/wiki).
 
-TODO: Describe possible configurations and each value
 
 ### RSpec Integration
 
