@@ -18,13 +18,7 @@ describe BooksController do
     context 'when an invalid topic is given' do
       let(:topic_id) { -1 }
 
-      before do
-        make_request
-      end
-
-      it 'responds with not_found status' do
-        expect(response).to have_http_status(:not_found)
-      end
+      include_examples 'not found examples'
     end
   end
 end
