@@ -1,8 +1,8 @@
 # This is the configuration used to check the rubocop source code.
-Documentation:
+Style/Documentation:
   Enabled: false
 
-LineLength:
+Metrics/LineLength:
   Max: 99
 
 Metrics/BlockLength:
