@@ -25,7 +25,30 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Fictium is a Gem to generate documentation from your tests.
+Instead of you having to write entirely new tests, the goal of this gem is to provide easy to use,
+tags and annotations on your existing tests.
+
+Fictium is closely tied to RSpec and Rails, but it's developed in a way to support more testing suites or engines in future versions.
+
+The primary goal is for generating OpenAPI Documentation, but, just like with RSpec, future versions may provide other output types.
+
+### Common terminology of this gem
+
+Because this GEM is used to represent REST APIs, this gem, provides some common objects, which are used as a documentation naming scheme. They are independant from the actual documentation format, so each exporter should transform this abstract representation into the actual document representation.
+
+The base object, is de [Fictium::Document](./lib/fictoum/poros/fictium/document). This class represent your whole API.
+One is created when the testing starts.
+
+The document, then is divided in resources. The class [Fictium::Resource](./lib/fictoum/poros/fictium/resource) is the one dedicated to handle them. A resource is a Rest object, for example, Posts, Users or Tags.
+
+Each resource is sub divided in actions, [Fictium::Action](./lib/fictoum/poros/fictium/action). Actions are enpoints associated with a REST method.
+
+### RSpec Integration
+
+Just add the following file fictium/rspec. And your RSpec test will run for free.
+
+[TODO: Add examples of using RSpec here!]
 
 ## Development
 

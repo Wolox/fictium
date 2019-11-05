@@ -10,3 +10,12 @@
 
 # rspec failure tracking
 .rspec_status
+
+coverage
+
+.byebug_history
+
+.rspec_status
+.byebug_history
+
+coverage
