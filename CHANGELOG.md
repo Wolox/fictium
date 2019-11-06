@@ -15,6 +15,14 @@
 
 [Change!] Add a list of changes
 
-## Changes
+## LOG
 
-(No gem release for now)
+### 0.1.0 (2019-11-06)
+
+Initial release, with Swagger exporter and RSpec integration.
+
+#### Changes
+
+  - Add RSpec integration.
+  - Add OpenAPI (V3) importer.
+  - Add default configurations.
