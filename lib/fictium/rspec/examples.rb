@@ -12,7 +12,10 @@ module Fictium
 
           it 'documents the example' do
             expect(metadata[:fictium_example]).to be_present
-            metadata[:fictium_example].process_http_response(response)
+            Fictium::RSpec::Autocomplete::Example.process_http_response(
+              metadata[:fictium_example],
+              response
+            )
           end
         end
       end
@@ -20,6 +23,24 @@ module Fictium
       class_methods do
         def default_example
           metadata[:fictium_example].default = true
+          metadata[:fictium_schema] = Fictium::SchemaEvaluator.new
+        end
+
+        def request_schema(obj)
+          metadata[:fictium_example].request ||= {}
+          metadata[:fictium_example].request[:schema] =
+            metadata[:fictium_schema].format(obj)
+        end
+
+        def response_schema(obj)
+          metadata[:fictium_example].response ||= {}
+          metadata[:fictium_example].response[:schema] =
+            metadata[:fictium_schema].format(obj)
+        end
+
+        def require_request_body!
+          metadata[:fictium_example].request ||= {}
+          metadata[:fictium_example].request[:required] = true
         end
       end
     end

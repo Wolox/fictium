@@ -33,3 +33,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+Fictium.configure do |config|
+  config.fixture_path = File.join(__dir__, 'support', 'docs')
+end

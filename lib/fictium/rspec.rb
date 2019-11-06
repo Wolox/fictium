@@ -4,6 +4,11 @@ require 'verbs'
 
 require_relative 'rspec/proxy_handler'
 
+require_relative 'rspec/autocomplete/action'
+require_relative 'rspec/autocomplete/example'
+require_relative 'rspec/autocomplete/resource'
+require_relative 'rspec/autocomplete/params'
+
 require_relative 'rspec/resources'
 require_relative 'rspec/actions'
 require_relative 'rspec/examples'

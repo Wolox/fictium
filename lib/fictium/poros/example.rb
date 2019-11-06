@@ -1,16 +1,11 @@
 module Fictium
   class Example < Fictium::Model
     attr_reader :action
-    attr_accessor :summary, :description, :status_code, :response_body, :content_type, :default
+    attr_accessor :summary, :description, :response, :request, :default, :headers
 
     def initialize(action)
       @action = action
-    end
-
-    def process_http_response(response)
-      self.status_code = response.status
-      self.response_body = response.body
-      self.content_type = response.content_type
+      @headers = ActiveSupport::HashWithIndifferentAccess.new
     end
 
     def default?

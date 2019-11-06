@@ -1,5 +1,7 @@
 # Fictium
 
+[![Build Status](https://travis-ci.org/Wolox/fictium.svg?branch=master)](https://travis-ci.org/Wolox/fictium) [![Maintainability](https://api.codeclimate.com/v1/badges/52afbf838f92fe260b6e/maintainability)](https://codeclimate.com/github/Wolox/fictium/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/52afbf838f92fe260b6e/test_coverage)](https://codeclimate.com/github/Wolox/fictium/test_coverage)
+
 This gem is a documentation helper. The goal of this gem is, by adding small modifications into your existing tests,
 you can then transform it into easy REST documentation.
 
@@ -32,6 +34,9 @@ tags and annotations on your existing tests.
 Fictium is closely tied to RSpec and Rails, but it's developed in a way to support more testing suites or engines in future versions.
 
 The primary goal is for generating OpenAPI Documentation, but, just like with RSpec, future versions may provide other output types.
+
+[Check out the wiki too!](./wiki)
+
 
 ### Common terminology of this gem
 
@@ -75,7 +80,8 @@ end
 The idea, is that your controller has actions, and each actions has examples.
 You can, for now, check `spec/controllers` at this repository to
 
-TODO: Go deeper to explain default overrides
+You can deeply customize your endpoints using RSpec.
+Check out details [here](./wiki/RSpec-definitions).
 
 ## Development
 
@@ -91,14 +97,11 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
+This gem is developed by (Wolox)[https://wolox.com.ar].
 
-## About
-
-This project was developed by [Ramiro Rojo](https://github.com/holywyvern).
 Maintainers: [Ramiro Rojo](https://github.com/holywyvern)
 Contributors: None (for now...)
 ![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
-
 
 ## Code of Conduct
 

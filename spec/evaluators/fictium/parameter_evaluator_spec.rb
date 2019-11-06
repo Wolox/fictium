@@ -2,21 +2,17 @@ describe Fictium::ParameterEvaluator do
   describe '#evaluate_params' do
     subject(:evaluator) { described_class.new }
 
-    let(:valid_params) do
-      ActiveSupport::HashWithIndifferentAccess.new(a: 2, b: 3, c: 4)
-    end
-
     context 'with a valid factory build' do
       before do
         evaluator.evaluate_params do
-          a { 2 }
-          b { 3 }
-          c { 4 }
+          a required: false
+          b schema: { ref: '/' }
+          c allow_empty: false
         end
       end
 
-      it 'evaluates parameters in a factory style' do
-        expect(evaluator.params).to eq valid_params
+      it 'returns the parameters as a hash with correct keys' do
+        expect(evaluator.params.keys).to match_array %w[a b c]
       end
     end
 
@@ -34,30 +30,12 @@ describe Fictium::ParameterEvaluator do
 
     before do
       evaluator.evaluate_params do
-        a { 2 }
+        a
       end
     end
 
-    it 'gets a given parameter by name' do
-      expect(evaluator[:a]).to eq(2)
-    end
-  end
-
-  describe '#respond_to?' do
-    subject(:evaluator) { described_class.new }
-
-    let(:method) { Faker::Name.name }
-
-    context 'when a block is given' do
-      it 'does not raise an error' do
-        expect { evaluator.send(method) {} }.not_to raise_error
-      end
-    end
-
-    context 'when no block is given' do
-      it 'raises a NoMethodError' do
-        expect { evaluator.send(method) }.to raise_error(NoMethodError)
-      end
+    it 'gets a given parameter by name as a hash' do
+      expect(evaluator[:a]).to be_a(Hash)
     end
   end
 end

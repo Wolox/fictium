@@ -1,15 +1,25 @@
 describe TopicsController do
+  include_context 'with JSON API'
+
   describe action 'GET #index' do
-    subject(:make_request) { get :index }
+    subject(:make_request) { get :index, params: { limit: 10, page: 1 } }
+
+    params_in :cookie do
+      search_id schema: { type: 'string' }
+    end
+
+    params_in :query do
+      limit schema: { type: 'integer' }
+      page schema: { type: 'integer' }
+    end
 
     describe example 'when a valid request is processed' do
       default_example
 
       before do
+        request.cookies[:search_id] = '<Search Token>'
         make_request
       end
-
-      default_example
 
       it 'responds with ok status' do
         expect(response).to have_http_status(:ok)
@@ -50,6 +60,7 @@ describe TopicsController do
       include_context 'with account login'
 
       default_example
+      require_request_body!
 
       let(:params) { { topic: { name: 'New Topic' } } }
 
@@ -80,6 +91,22 @@ describe TopicsController do
       include_context 'with account login'
 
       default_example
+      require_request_body!
+      request_schema type: 'object', required: %w[tag], properties: {
+        tag: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string'
+            }
+          },
+          required: %w[name]
+        }
+      }
+      response_schema type: 'object', properties: {
+        id: { type: 'integer' },
+        name: { type: 'string' }
+      }
 
       before do
         make_request

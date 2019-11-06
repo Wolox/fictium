@@ -5,7 +5,10 @@ module Fictium
 
       included do
         metadata[:fictium_action] = metadata[:fictium_resource].create_action
-        metadata[:fictium_action].description_attributes(metadata[:description])
+        Fictium::RSpec::Autocomplete::Action.description_attributes(
+          metadata[:fictium_action],
+          metadata[:description]
+        )
       end
 
       class_methods do
@@ -19,6 +22,17 @@ module Fictium
 
         def example(*args, **kwargs)
           Fictium::RSpec::Proxies::Example.new(self, args, kwargs)
+        end
+
+        def deprecate!
+          metadata[:fictium_action].deprecated = true
+        end
+
+        def action_docs(description: nil, url:)
+          metadata[:fictium_action].docs = {}.tap do |docs|
+            docs[:url] = url
+            docs[:description] = description if description.present?
+          end
         end
       end
     end
