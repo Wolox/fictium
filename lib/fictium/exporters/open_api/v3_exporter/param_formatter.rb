@@ -12,6 +12,7 @@ module Fictium
           description = param.slice(:description, :required, :deprecated, :schema)
           description[:allowEmptyValue] = param[:allow_empty] if param[:allow_empty].present?
           add_required_fields(description)
+          add_optional_fields(name, section, description)
           description
         end
 
