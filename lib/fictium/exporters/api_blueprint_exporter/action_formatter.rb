@@ -1,8 +1,10 @@
 module Fictium
   class ApiBlueprintExporter
-    class ActionFormatter
-      def format(action)
-        [build_header(action).strip, build_examples(action)].select(&:present?).join("\n\n")
+    class ActionFormatter < Fictium::ApiBlueprintExporter::BaseFormatter
+      protected
+
+      def format_sections(action)
+        [build_header(action), build_examples(action)]
       end
 
       private

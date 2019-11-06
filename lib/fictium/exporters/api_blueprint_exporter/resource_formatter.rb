@@ -1,11 +1,10 @@
 module Fictium
   class ApiBlueprintExporter
-    class ResourceFormatter
-      def format(resource)
+    class ResourceFormatter < Fictium::ApiBlueprintExporter::BaseFormatter
+      protected
+
+      def format_sections(resource)
         [build_header(resource), build_actions(resource)]
-          .map(&:strip)
-          .select(&:present?)
-          .join("\n\n")
       end
 
       private

@@ -1,3 +1,5 @@
+require_relative 'api_blueprint_exporter/base_formatter'
+
 require_relative 'api_blueprint_exporter/header_formatter'
 require_relative 'api_blueprint_exporter/resource_formatter'
 require_relative 'api_blueprint_exporter/action_formatter'

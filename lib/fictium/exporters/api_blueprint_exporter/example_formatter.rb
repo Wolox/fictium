@@ -1,8 +1,10 @@
 module Fictium
   class ApiBlueprintExporter
-    class ExampleFormatter
-      def format(example)
-        [format_request(example).strip, format_response(example).strip].join("\n\n")
+    class ExampleFormatter < Fictium::ApiBlueprintExporter::BaseFormatter
+      protected
+
+      def format_sections(example)
+        [format_request(example), format_response(example)]
       end
 
       private
