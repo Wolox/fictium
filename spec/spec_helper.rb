@@ -18,6 +18,9 @@ SimpleCov.start
 # Load default config (fictium included!)
 Bundler.require(:default)
 
+# Fictium's official RSpec integration
+require 'fictium/rspec'
+
 RSpec.configure do |config|
   config.include ActionDispatch::TestProcess
 

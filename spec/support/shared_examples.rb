@@ -1,5 +1,5 @@
 shared_examples 'unauthorized when not logged in' do
-  context 'when no account is signed in' do
+  describe example 'when no account is signed in' do
     before do
       make_request
     end

@@ -3,6 +3,7 @@ PATH
   specs:
     fictium (0.1.0)
       activesupport (>= 5.3, < 6.2)
+      verbs (~> 2.1.4)
 
 GEM
   remote: https://rubygems.org/
@@ -179,6 +180,9 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
+    verbs (2.1.4)
+      activesupport (>= 2.3.4)
+      i18n
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)

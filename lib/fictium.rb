@@ -15,11 +15,12 @@ end
 
 module Fictium
   class << self
-    attr_reader :configuration
+    def configuration
+      @configuration ||= Fictium::Configuration.new
+    end
 
     def configure
-      @configuration ||= Fictium::Configuration.new
-      yield @configuration
+      yield configuration
     end
   end
 end
