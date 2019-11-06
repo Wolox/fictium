@@ -17,9 +17,8 @@ module Fictium
     private
 
     def process_file(document)
-      [build_header(document), build_footer(document), build_resources(document)]
-        .select(&:present?)
-        .join("\n\n")
+      list = [build_header(document), build_footer(document), build_resources(document)]
+      clean_items(list)
     end
 
     def export_file
@@ -34,7 +33,8 @@ module Fictium
     def build_resources(document)
       mapped_resources = document.resources.map do |resource|
         resource_formatter.format(resource)
-      end.select(&:present?).join("\n\n").strip
+      end
+      mapped_resources = clean_items(mapped_resources)
       mapped_resources.present? ? "# Group #{resources_group_name} \n\n#{mapped_resources}" : ''
     end
 
@@ -56,6 +56,10 @@ module Fictium
 
     def resources_group_name
       Fictium.configuration.api_blueprint.resources_group_name
+    end
+
+    def clean_items(items)
+      items.select(&:present?).join("\n\n")
     end
   end
 end
