@@ -1,0 +1,32 @@
+# This is the configuration used to check the rubocop source code.
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 99
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# rubocop-rspec custom configurations
+
+require: rubocop-rspec
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+RSpec/ExampleLength:
+  Exclude:
+
+RSpec/AnyInstance:
+  Enabled: true
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 3

@@ -1,0 +1,28 @@
+# Fictium Changelog
+
+## Notes
+
+- Newer changes should be on top.
+- Release dates are at GTM-3, Argentina time zone.
+
+## Format for changes
+
+### [Version name] ([YYYY-MM-DD])
+
+[Change!] Summary for the version
+
+#### Changes
+
+[Change!] Add a list of changes
+
+## LOG
+
+### 0.1.0 (2019-11-06)
+
+Initial release, with Swagger exporter and RSpec integration.
+
+#### Changes
+
+  - Add RSpec integration.
+  - Add OpenAPI (V3) importer.
+  - Add default configurations.
