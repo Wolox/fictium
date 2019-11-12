@@ -49,9 +49,16 @@ module Fictium
           end
 
           def valid_header?(name)
-            return false if ignored_header_groups.any? { |group| name.downcase.start_with?(group) }
+            downcase_name = name.downcase
+            out_of_header_group?(downcase_name) && out_of_excluded_headers?(downcase_name)
+          end
 
-            !Fictium.configuration.ignored_header_values.include?(name.downcase)
+          def out_of_header_group?(name)
+            ignored_header_groups.none? { |group| name.start_with?(group) }
+          end
+
+          def out_of_excluded_headers?(name)
+            Fictium.configuration.ignored_header_values.exclude?(name)
           end
 
           def ignored_header_groups

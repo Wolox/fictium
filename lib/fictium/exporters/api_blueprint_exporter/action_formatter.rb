@@ -11,7 +11,8 @@ module Fictium
 
       def build_header(action)
         result = "## #{action.summary} [#{action.method.to_s.upcase} #{action.path}]"
-        "#{result}#{action.description.present? ? "\n\n#{action.description}\n" : ''}"
+        description = action.description.present? ? "\n\n#{action.description}\n" : ''
+        "#{result}#{description}"
       end
 
       def build_examples(action)

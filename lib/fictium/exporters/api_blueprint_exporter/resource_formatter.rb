@@ -12,7 +12,8 @@ module Fictium
       def build_header(resource)
         header = "# #{resource.name&.pluralize&.humanize} [#{resource.base_path}]"
         header += "\n#{resource.summary.capitalize}\n" if resource.summary.present?
-        "#{header}#{resource.description.present? ? "\n#{resource.description}\n" : ''}"
+        description = resource.description.present? ? "\n#{resource.description}\n" : ''
+        "#{header}#{description}"
       end
 
       def build_actions(resource)
