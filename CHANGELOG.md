@@ -19,7 +19,7 @@
 
 ### 0.3.1 (2019-11-12)
 
-New exporter: Postman.
+Added support for rails 5.1
 
 #### Changes
 
