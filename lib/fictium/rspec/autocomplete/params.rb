@@ -3,7 +3,7 @@ module Fictium
     module Autocomplete
       module Params
         REQUEST_SECTIONS = %i[query header path cookie].freeze
-        PATH_TEMPLATE = /{([A-Z_\-][A-Z0-9_\-]*)}/i.freeze
+        IGNORED_PATH_PARAMETERS = %i[action controller].freeze
 
         class << self
           def extract_from_request(action, request)
@@ -47,10 +47,12 @@ module Fictium
             end
           end
 
-          def parse_request_path(params, action, _request)
-            action.full_path.scan(PATH_TEMPLATE).flatten.each do |name|
+          def parse_request_path(params, _action, request)
+            request.path_parameters.except(*IGNORED_PATH_PARAMETERS).each do |name, value|
               params[name] ||= {}
-              # TODO: Extract example from request
+              params[name].merge!(
+                example: value
+              )
             end
           end
 
