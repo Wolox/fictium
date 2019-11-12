@@ -112,6 +112,7 @@ This gem is developed by (Wolox)[https://wolox.com.ar].
 
 Maintainers: [Ramiro Rojo](https://github.com/holywyvern)
 Contributors: None (for now...)
+
 ![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)
 
 ## Code of Conduct
