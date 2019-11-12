@@ -17,6 +17,15 @@
 
 ## LOG
 
+### 0.2.0 (2019-11-12)
+
+New exporter: API Blueprint.
+
+#### Changes
+
+- Fixed some autocomplete from RSpec.
+- Created the new API Blueprint exporter.
+
 ### 0.1.0 (2019-11-06)
 
 Initial release, with Swagger exporter and RSpec integration.
