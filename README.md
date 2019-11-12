@@ -108,7 +108,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-This gem is developed by (Wolox)[https://wolox.com.ar].
+This gem is developed by [Wolox](https://wolox.com.ar).
 
 Maintainers: [Ramiro Rojo](https://github.com/holywyvern)
 Contributors: None (for now...)
