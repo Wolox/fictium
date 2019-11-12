@@ -12,14 +12,14 @@ module Fictium
       def build_header(resource)
         header = "# #{resource.name&.pluralize&.humanize} [#{resource.base_path}]"
         header += "\n#{resource.summary.capitalize}\n" if resource.summary.present?
-        header += "\n#{resource.description}\n" if resource.description.present?
-        header
+        "#{header}#{resource.description.present? ? "\n#{resource.description}\n" : ''}"
       end
 
       def build_actions(resource)
-        resource.actions.map do |action|
+        sections = resource.actions.map do |action|
           action_formatter.format(action)
-        end.select(&:present?).join("\n\n")
+        end
+        join_sections(sections)
       end
 
       def action_formatter
