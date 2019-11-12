@@ -17,6 +17,15 @@
 
 ## LOG
 
+### 0.3.0 (2019-11-12)
+
+New exporter: Postman.
+
+#### Changes
+
+- Allow to export the documentation as a Postman collection. (Even with examples)
+- Added code climate's integration for test coverage.
+
 ### 0.2.0 (2019-11-12)
 
 New exporter: API Blueprint.
