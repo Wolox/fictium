@@ -17,6 +17,14 @@
 
 ## LOG
 
+### 0.3.2 (2019-11-12)
+
+Use path parameters instead of formatting path.
+
+#### Changes
+
+- Use path parameters instead of formatting path.
+
 ### 0.3.1 (2019-11-12)
 
 Added support for rails 5.1
