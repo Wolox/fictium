@@ -13,6 +13,7 @@ The current Gem version allows to export into the following formats:
 |---          |---         |---    |
 | [OpenApi 3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md) | `Fictium::OpenApi::V3Exporter`    | The default exporter for the current Gem version. It doesn't include 100% of the OpenAPI specification, but it works for the most common use cases. It's the format [Swagger](https://swagger.io/) uses for documentation. |
 | [API Blueprint](https://apiblueprint.org/documentation/specification.html) | `Fictium::ApiBlueprintExporter`| Used by [Apiary](https://apiary.io/). A superset of Markdown with special keywords and controls. |
+| [Postman Collection](https://schema.getpostman.com/json/collection/v2.1.0/docs/index.html) | `Fictium::Postman::V2Exporter` | Export your test as a [Postman](https://www.getpostman.com/) collection for easy creation of mock APIs and quick debugging. |
 
 Future versions may provide:
 

@@ -8,7 +8,7 @@ module Fictium
             example.response.merge!(
               status: response.status,
               body: response.body,
-              content_type: response.content_type,
+              content_type: response.media_type,
               header: filter_header(response.header.to_h)
             )
             process_http_request(example, response.request)
@@ -25,15 +25,21 @@ module Fictium
 
           def process_http_request(example, request)
             example.request ||= {}
-            example.request.merge!(
-              content_type: request.content_type,
-              body: request.body.string,
-              header: filter_header(request.headers.to_h)
-            )
+            example.request.merge!(process_base_request(request))
             extract_method(example, request)
             return unless example.default?
 
             autocomplete_params.extract_from_request(example.action, request)
+          end
+
+          def process_base_request(request)
+            {
+              content_type: request.content_type,
+              body: request.body.string,
+              header: filter_header(request.headers.to_h),
+              path_parameters: request.path_parameters.except(:controller, :action),
+              query_parameters: request.query_parameters
+            }
           end
 
           def extract_method(example, request)

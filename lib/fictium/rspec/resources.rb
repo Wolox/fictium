@@ -35,6 +35,11 @@ module Fictium
         def resource_tags(*tags)
           metadata[:fictium_resource].tags += tags
         end
+
+        def postman_for(object, &block)
+          resource = metadata[:"fictium_#{object}"]
+          Fictium::PostmanEvaluator.new(resource).evaluate(&block)
+        end
       end
     end
   end

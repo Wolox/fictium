@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fictium (0.2.0)
+    fictium (0.3.0)
       activesupport (>= 5.3, < 6.2)
       json-schema (~> 2.8)
       verbs (~> 2.1.4)
