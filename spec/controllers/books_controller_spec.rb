@@ -4,7 +4,7 @@ describe BooksController do
   # While automatically inferred, they can be also manually specified:
   base_path '/topics/{topic_id}/books'
   resource_name 'book'
-  resource_summary 'Lists all books for a specific topic.'
+  resource_summary 'Handles books organized by tags.'
   resource_description <<~HEREDOC
     This will fail if the topic does not exists.
     The results are not paginated.
@@ -19,6 +19,8 @@ describe BooksController do
     end
 
     # This is also auto detected, but can be manually changed
+    action_summary 'List all books from a specific topic'
+    action_description 'By giving an specific topic, this endpoint retrieves all books from it'
     path ''
     deprecate!
     action_docs url: 'http://docstoaction.com'
@@ -44,5 +46,35 @@ describe BooksController do
 
       include_examples 'not found examples'
     end
+  end
+
+  describe action 'PATCH #promote' do
+    subject(:make_request) { patch :promote, params: params }
+
+    let(:params) { { id: book_id } }
+    let(:book_id) { 1 }
+
+    describe example 'when a valid book is given' do
+      include_context 'with account login'
+
+      before do
+        make_request
+      end
+
+      default_example
+
+      it 'responds with ok status' do
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    describe example 'when an invalid book is promoted' do
+      include_context 'with account login'
+      let(:book_id) { -1 }
+
+      include_examples 'not found examples'
+    end
+
+    include_examples 'unauthorized when not logged in'
   end
 end

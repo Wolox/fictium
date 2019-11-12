@@ -8,7 +8,8 @@ module Fictium
             example.response.merge!(
               status: response.status,
               body: response.body,
-              content_type: response.content_type
+              content_type: response.content_type,
+              header: filter_header(response.header.to_h)
             )
             process_http_request(example, response.request)
             return unless example.default?
@@ -26,7 +27,8 @@ module Fictium
             example.request ||= {}
             example.request.merge!(
               content_type: request.content_type,
-              body: request.body.string
+              body: request.body.string,
+              header: filter_header(request.headers.to_h)
             )
             extract_method(example, request)
             return unless example.default?
@@ -37,6 +39,30 @@ module Fictium
           def extract_method(example, request)
             action = example.action
             action.method = request.method.downcase.to_sym if action.method.blank?
+          end
+
+          def filter_header(header)
+            valid_keys = header.keys.select { |name| valid_header?(name) }
+            header.slice(*valid_keys).transform_keys do |key|
+              (key.start_with?('HTTP_') ? key.sub('HTTP_', '') : key).sub('_', '-')
+            end
+          end
+
+          def valid_header?(name)
+            downcase_name = name.downcase
+            out_of_header_group?(downcase_name) && out_of_excluded_headers?(downcase_name)
+          end
+
+          def out_of_header_group?(name)
+            ignored_header_groups.none? { |group| name.start_with?(group) }
+          end
+
+          def out_of_excluded_headers?(name)
+            Fictium.configuration.ignored_header_values.exclude?(name)
+          end
+
+          def ignored_header_groups
+            Fictium.configuration.ignored_header_groups
           end
         end
       end
