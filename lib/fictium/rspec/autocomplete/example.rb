@@ -8,7 +8,7 @@ module Fictium
             example.response.merge!(
               status: response.status,
               body: response.body,
-              content_type: response.content_type,
+              content_type: response.media_type,
               header: filter_header(response.header.to_h)
             )
             process_http_request(example, response.request)
