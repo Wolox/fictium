@@ -17,6 +17,14 @@
 
 ## LOG
 
+### 0.3.1 (2019-11-12)
+
+New exporter: Postman.
+
+#### Changes
+
+- Add support for older Rails versions.
+
 ### 0.3.0 (2019-11-12)
 
 New exporter: Postman.
