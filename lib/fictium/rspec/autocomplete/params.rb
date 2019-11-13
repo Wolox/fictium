@@ -6,7 +6,10 @@ module Fictium
         IGNORED_PATH_PARAMETERS = %i[action controller].freeze
 
         class << self
+          include Rails.application.routes.url_helpers
+
           def extract_from_request(action, request)
+            extract_path(action, request)
             REQUEST_SECTIONS.each do |section|
               action.params[section] ||= ActiveSupport::HashWithIndifferentAccess.new
               send(:"parse_request_#{section}", action.params[section], action, request)
@@ -26,6 +29,25 @@ module Fictium
           end
 
           private
+
+          def extract_path(action, request)
+            return unless action.path.nil?
+
+            mapped_controllers = transform_path(request)
+            full_path = CGI.unescape(url_for(**mapped_controllers.merge(only_path: true)))
+            action.path = full_path.sub(action.resource.base_path || '', '')
+          end
+
+          def transform_path(request)
+            {}.tap do |result|
+              request.path_parameters.except(*IGNORED_PATH_PARAMETERS).each do |key, _|
+                result[key] = "{#{key}}"
+              end
+              request.path_parameters.slice(*IGNORED_PATH_PARAMETERS).each do |key, value|
+                result[key] = value
+              end
+            end
+          end
 
           def parse_request_query(params, _action, request)
             request.query_parameters.each do |key, value|

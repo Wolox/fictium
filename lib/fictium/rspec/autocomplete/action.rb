@@ -3,19 +3,11 @@ module Fictium
     module Autocomplete
       module Action
         ACTION_NAME = /#([A-Z_]+)/i.freeze
-        DEFAULT_PATHS = {
-          index: '',
-          create: '',
-          new: '/new',
-          show: '/{id}',
-          update: '/{id}',
-          destroy: '/{id}'
-        }.freeze
+
         class << self
           def description_attributes(action, description)
             name = find_action_name(description)&.downcase
             find_summary(action, name)
-            find_path(action, name)
           end
 
           private
@@ -32,13 +24,6 @@ module Fictium
 
           def descriptors
             @descriptors ||= Fictium.configuration.default_action_descriptors || {}
-          end
-
-          def find_path(action, name)
-            return if name.blank?
-
-            key = name.to_sym
-            action.path = DEFAULT_PATHS[key] || "/{id}/#{name}"
           end
 
           def find_action_name(description)

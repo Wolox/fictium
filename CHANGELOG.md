@@ -17,6 +17,14 @@
 
 ## LOG
 
+### 0.3.3 (2019-11-12)
+
+Improve path recognition using controller actions.
+
+#### Changes
+
+- Use path parameters instead of formatting path.
+
 ### 0.3.2 (2019-11-12)
 
 Use path parameters instead of formatting path.
