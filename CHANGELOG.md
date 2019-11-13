@@ -17,6 +17,14 @@
 
 ## LOG
 
+### 0.3.4 (2019-11-12)
+
+Add correct action Method
+
+#### Changes
+
+- Use request to get action method
+
 ### 0.3.3 (2019-11-12)
 
 Improve path recognition using controller actions.

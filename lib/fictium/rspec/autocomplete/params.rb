@@ -9,6 +9,7 @@ module Fictium
           include Rails.application.routes.url_helpers
 
           def extract_from_request(action, request)
+            action.method = request.method.downcase
             extract_path(action, request)
             REQUEST_SECTIONS.each do |section|
               action.params[section] ||= ActiveSupport::HashWithIndifferentAccess.new
