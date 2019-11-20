@@ -1,5 +1,4 @@
 require 'fictium'
-require 'rspec'
 require 'verbs'
 
 require_relative 'rspec/proxy_handler'

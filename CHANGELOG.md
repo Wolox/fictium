@@ -17,6 +17,14 @@
 
 ## LOG
 
+### 0.3.5 (2019-11-20)
+
+Remove require rspec
+
+#### Changes
+
+- Because fictium/rspec is required on rspec environments it is not needed anymore.
+
 ### 0.3.4 (2019-11-12)
 
 Add correct action Method
