@@ -53,7 +53,7 @@ module Fictium
 
         def format_query(example)
           example.request[:query_parameters].map do |key, value|
-            result = { key: key, value: value }
+            result = { key: key, value: value.to_json }
             description = example.action[:query][key] && example.action[:query][key][:description]
             result[:description] = description if description.present?
             result
