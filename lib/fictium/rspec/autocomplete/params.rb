@@ -37,6 +37,8 @@ module Fictium
             mapped_controllers = transform_path(request)
             full_path = CGI.unescape(url_for(**mapped_controllers.merge(only_path: true)))
             action.path = full_path.sub(action.resource.base_path || '', '')
+          rescue ActionController::UrlGenerationError
+            action.path = ''
           end
 
           def transform_path(request)
