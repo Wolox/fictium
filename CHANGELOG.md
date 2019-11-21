@@ -17,6 +17,14 @@
 
 ## LOG
 
+### 0.3.6 (2019-11-21)
+
+Small fixes
+
+#### Changes
+
+- Fixes cases where parameters are not strings, it converts them into json.
+
 ### 0.3.5 (2019-11-20)
 
 Remove require rspec
