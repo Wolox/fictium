@@ -17,6 +17,14 @@
 
 ## LOG
 
+### 0.4.0 (2019-11-28)
+
+Error messages
+
+#### Changes
+
+- Now the gem will check the configuration before running and give some nice error messages.
+
 ### 0.3.6 (2019-11-21)
 
 Small fixes
