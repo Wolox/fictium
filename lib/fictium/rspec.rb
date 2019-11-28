@@ -33,6 +33,7 @@ RSpec.configure do |config|
   config.include Fictium::RSpec::Examples, fictium_example: true
 
   config.after(:suite) do
+    Fictium.validate_config!
     Fictium::RSpec.document.export
   end
 end

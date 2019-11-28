@@ -1,3 +1,5 @@
+defined?(Rails) || raise('Rails is required to be loaded before "fictium/rspec" is required.')
+
 module Fictium
   module RSpec
     module Autocomplete
