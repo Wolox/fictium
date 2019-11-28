@@ -25,5 +25,23 @@ module Fictium
     def configure
       yield configuration
     end
+
+    def validate_config!
+      raise missing_fixtures if configuration.fixture_path.blank?
+    end
+
+    private
+
+    def missing_fixtures
+      <<~HEREDOC
+        Fictium requires to configure your fixture_path first in order to run Fictium.
+
+        Add the following lines into your rails_helper.rb:
+
+        Fictium.configure do |config|
+          config.fixture_path = File.join(__dir__, 'support', 'docs')
+        end
+      HEREDOC
+    end
   end
 end

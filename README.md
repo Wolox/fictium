@@ -68,7 +68,8 @@ To configure how this gem completes your documentation, you have some configurat
 
 ### RSpec Integration
 
-Just `require 'fictium/rspec'` in your spec helper and your RSpec test will include everything you need to work in your environment.
+Just `require 'fictium/rspec'` in your rails helper and your RSpec test will include everything you need to work in your environment.
+(be aware, the current version requires Rails to be previously loaded to work).
 
 At any test of type: :controller, you can just add the following helpers:
 
