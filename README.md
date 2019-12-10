@@ -46,7 +46,7 @@ Fictium is closely tied to RSpec and Rails, but it's developed in a way to suppo
 
 The primary goal is for generating OpenAPI Documentation, but, just like with RSpec, future versions may provide other output types.
 
-[Check out the wiki too!](./wiki)
+[Check out the wiki too!](https://github.com/Wolox/fictium/wiki)
 
 
 ### Common terminology of this gem
