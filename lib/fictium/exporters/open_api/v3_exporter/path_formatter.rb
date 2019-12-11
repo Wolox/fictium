@@ -43,11 +43,11 @@ module Fictium
 
             example_formatter.format_default(operation, responses, default_example)
             other_examples = action.examples.reject { |example| example == default_example }
-            other_examples.each(&method(:format_example))
+            other_examples.each { format_example(responses, example) }
           end
         end
 
-        def format_example(example)
+        def format_example(responses, example)
           return if example.response.blank?
 
           responses[example.response[:status]] = example_formatter.format(example)
