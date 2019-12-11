@@ -43,7 +43,7 @@ module Fictium
 
             example_formatter.format_default(operation, responses, default_example)
             other_examples = action.examples.reject { |example| example == default_example }
-            other_examples.each { format_example(responses, example) }
+            other_examples.each { |example| format_example(responses, example) }
           end
         end
 
