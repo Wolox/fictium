@@ -29,6 +29,8 @@ module Fictium
         end
 
         def full_path(example)
+          return '' if example.request.blank?
+
           "#{api_url}#{convert_path(example.action)}#{query_params_for(example)}"
         end
 
@@ -52,6 +54,8 @@ module Fictium
         end
 
         def format_query(example)
+          return [] if example.request.blank?
+
           example.request[:query_parameters].map do |key, value|
             result = { key: key, value: value.to_json }
             description = example.action[:query][key] && example.action[:query][key][:description]
@@ -61,6 +65,8 @@ module Fictium
         end
 
         def format_variable(example)
+          return [] if example.request.blank?
+
           [].tap do |result|
             example.action[:path].each do |name, _|
               data = { id: name, key: name }
@@ -72,6 +78,8 @@ module Fictium
         end
 
         def add_optional_values(example, result)
+          return if example.request.blank?
+
           body = body_formatter.format(example.request)
           result[:body] = body if body.present?
         end

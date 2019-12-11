@@ -3,6 +3,8 @@ module Fictium
     class V2Exporter
       class BodyFormatter
         def format(http_subject, response: false)
+          return if http_subject.blank?
+
           body = http_subject[:body]
           return if body.blank?
           return body if response
