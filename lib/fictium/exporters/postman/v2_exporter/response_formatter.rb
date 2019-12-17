@@ -14,6 +14,8 @@ module Fictium
         private
 
         def base_info_for(example)
+          return {} if example.response.blank?
+
           status = example.response[:status]
           formatted_status = format_status(status, example)
           {

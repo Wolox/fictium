@@ -3,6 +3,8 @@ module Fictium
     class V3Exporter
       class PathFormatter
         def add_path(paths, action)
+          return if action.method.blank?
+
           path_object = paths[action.full_path] || default_path_object
           path_object[action.method.to_sym] = create_operation(action)
           paths[action.full_path] = path_object
@@ -41,10 +43,14 @@ module Fictium
 
             example_formatter.format_default(operation, responses, default_example)
             other_examples = action.examples.reject { |example| example == default_example }
-            other_examples.each do |example|
-              responses[example.response[:status]] = example_formatter.format(example)
-            end
+            other_examples.each { |example| format_example(responses, example) }
           end
+        end
+
+        def format_example(responses, example)
+          return if example.response.blank?
+
+          responses[example.response[:status]] = example_formatter.format(example)
         end
 
         def example_formatter

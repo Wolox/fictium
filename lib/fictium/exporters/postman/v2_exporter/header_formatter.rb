@@ -3,6 +3,8 @@ module Fictium
     class V2Exporter
       class HeaderFormatter
         def format(http_subject)
+          return [] if http_subject.blank?
+
           [].tap do |header|
             content = http_subject[:content_type]
             header << { key: 'Content-Type', value: content } if content.present?

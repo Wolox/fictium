@@ -10,6 +10,7 @@ module Fictium
       private
 
       def format_request(example)
+        return '' if example.request.blank?
         return '' if example.request[:body].blank?
 
         result = request_head(example)
@@ -19,6 +20,8 @@ module Fictium
       end
 
       def format_response(example)
+        return '' if example.response.blank?
+
         result = response_head(example)
         result += parse_http_object(example.response)
         result
