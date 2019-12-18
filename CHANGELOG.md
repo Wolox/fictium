@@ -17,6 +17,14 @@
 
 ## LOG
 
+### 0.4.1 (2019-12-18)
+
+Allowing to test specific lines.
+
+#### Changes
+
+- Fictium won't crash anymore when running tests for specific lines.
+
 ### 0.4.0 (2019-11-28)
 
 Error messages
