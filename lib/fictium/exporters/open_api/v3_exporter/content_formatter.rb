@@ -20,7 +20,7 @@ module Fictium
         protected
 
         def body_formatter(content_type, body)
-          content_type == APP_JSON ? JSON.parse(body) : body
+          content_type == APP_JSON && !body.empty? ? JSON.parse(body) : body
         end
       end
     end
