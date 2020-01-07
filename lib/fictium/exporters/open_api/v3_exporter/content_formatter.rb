@@ -10,7 +10,7 @@ module Fictium
 
           {}.tap do |content|
             media_type = {
-              example: body_formatter(http_object[:content_type], http_object[:body])
+              example: format_body(http_object[:content_type], http_object[:body])
             }
             media_type[:schema] = http_object[:schema] if http_object[:schema].present?
             content[type.to_sym] = media_type
@@ -19,7 +19,7 @@ module Fictium
 
         protected
 
-        def body_formatter(content_type, body)
+        def format_body(content_type, body)
           content_type == APP_JSON && !body.empty? ? JSON.parse(body) : body
         end
       end
