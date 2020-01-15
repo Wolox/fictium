@@ -2,7 +2,7 @@ describe BooksController do
   include_context 'with JSON API'
 
   # While automatically inferred, they can be also manually specified:
-  base_path '/topics/{topic_id}/books'
+  base_path '/topics/:topic_id'
   resource_name 'book'
   resource_summary 'Handles books organized by tags.'
   resource_description <<~HEREDOC
