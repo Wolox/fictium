@@ -6,6 +6,8 @@ module Fictium
           responses[:default] = format(default_example)
           return if default_example.request[:content_type].blank?
 
+          return unless valid_request_body?(default_example.request[:body])
+
           operation[:requestBody] = {
             content: content_formatter.format(default_example.request)
           }
@@ -39,6 +41,12 @@ module Fictium
 
         def header_formatter
           @header_formatter ||= ParamFormatter.new(ignore_name: true, ignore_in: true)
+        end
+
+        private
+
+        def valid_request_body?(request_body)
+          request_body.present? && JSON.parse(request_body).present?
         end
       end
     end
